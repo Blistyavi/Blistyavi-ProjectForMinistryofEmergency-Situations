@@ -147,7 +147,7 @@ function App() {
                   height: "60px",
                   border: "1px solid #ccc",
                   borderRadius: "4px",
-                  padding: "8px",
+                  padding: "5px",
                 }}
               />
             ) : (
