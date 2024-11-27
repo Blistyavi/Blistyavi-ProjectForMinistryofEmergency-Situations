@@ -79,10 +79,36 @@ function App() {
   };
 
   return (
-    <div style={{ padding: "20px", fontFamily: "Arial, sans-serif"}}> 
-      <h1>Протокол об административном правонарушении</h1>
-      <img className="fotka" src={fotka} alt=""></img>
-      <form>
+    <div
+      style={{
+        padding: "20px",
+        fontFamily: "Arial, sans-serif",
+        maxWidth: "800px", // Ограничение ширины для больших экранов
+        margin: "0 auto", // Центрирование на экранах
+      }}
+    >
+      <h1 style={{ fontSize: "24px", textAlign: "center" }}>
+        Протокол об административном правонарушении
+      </h1>
+      <img
+        className="fotka"
+        src={fotka}
+        alt=""
+        style={{
+          maxWidth: "100%", // Изображение занимает ширину контейнера
+          height: "auto", // Сохраняет пропорции
+          display: "block", // Центрируем изображение
+          margin: "0 auto",
+        }}
+      />
+      <form
+        className="container"
+        style={{
+          display: "flex",
+          flexDirection: "column", // Вертикальная ориентация элементов
+          gap: "15px", // Расстояние между элементами
+        }}
+      >
         {[
           { label: "Регистрационный номер:", name: "regNumber" },
           { label: "Дата составления:", name: "date", type: "date" },
@@ -101,13 +127,28 @@ function App() {
           { label: "Особые замечания:", name: "notes", type: "textarea" },
         ].map((field, index) => (
           <div key={index} style={{ marginBottom: "15px" }}>
-            <label class="main" style={{ display: "inline-block", fontWeight: "bold",  }}>{field.label}</label>
+            <label
+              className="main"
+              style={{
+                display: "block",
+                fontWeight: "bold",
+                marginBottom: "5px",
+              }}
+            >
+              {field.label}
+            </label>
             {field.type === "textarea" ? (
               <textarea
                 name={field.name}
                 value={formData[field.name]}
                 onChange={handleChange}
-                style={{ width: "100%", height: "60px" }}
+                style={{
+                  width: "100%",
+                  height: "60px",
+                  border: "1px solid #ccc",
+                  borderRadius: "4px",
+                  padding: "8px",
+                }}
               />
             ) : (
               <input
@@ -115,17 +156,37 @@ function App() {
                 name={field.name}
                 value={formData[field.name]}
                 onChange={handleChange}
-                style={{ width: "100%" }}
+                style={{
+                  width: "100%",
+                  border: "1px solid #ccc",
+                  borderRadius: "4px",
+                  padding: "8px",
+                }}
               />
             )}
           </div>
         ))}
       </form>
-      <button onClick={saveDocx} style={{ padding: "10px 20px", fontSize: "16px", backgroundColor: "#4CAF50", color: "white", border: "none", borderRadius: "6px", cursor: "pointer" }}>
+      <button
+        onClick={saveDocx}
+        style={{
+          padding: "10px 20px",
+          fontSize: "16px",
+          backgroundColor: "#4CAF50",
+          color: "white",
+          border: "none",
+          borderRadius: "6px",
+          cursor: "pointer",
+          width: "100%", // Кнопка растягивается на всю ширину экрана
+          maxWidth: "300px", // Ограничение для больших экранов
+          margin: "20px auto 0", // Центрируем кнопку
+          display: "block",
+        }}
+      >
         Сохранить в DOCX
       </button>
     </div>
-  );
+  );  
 }
 
 export default App;
