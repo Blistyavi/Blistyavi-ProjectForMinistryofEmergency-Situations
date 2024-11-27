@@ -93,11 +93,11 @@ function App() {
       <img
         className="fotka"
         src={fotka}
-        alt=""
+        alt="Фото"
         style={{
-          maxWidth: "100%", // Изображение занимает ширину контейнера
-          height: "auto", // Сохраняет пропорции
-          display: "block", // Центрируем изображение
+          maxWidth: "100%",
+          height: "auto",
+          display: "block",
           margin: "0 auto",
         }}
       />
@@ -105,8 +105,10 @@ function App() {
         className="container"
         style={{
           display: "flex",
-          flexDirection: "column", // Вертикальная ориентация элементов
-          gap: "15px", // Расстояние между элементами
+          flexDirection: "column",
+          gap: "15px",
+          width: "100%",
+          boxSizing: "border-box",
         }}
       >
         {[
@@ -139,28 +141,32 @@ function App() {
             </label>
             {field.type === "textarea" ? (
               <textarea
-                name={field.name}
-                value={formData[field.name]}
-                onChange={handleChange}
-                style={{
-                  width: "100%",
-                  height: "60px",
-                  border: "1px solid #ccc",
-                  borderRadius: "4px",
-                  padding: "2px",
+              name={field.name}
+              value={formData[field.name]}
+              onChange={handleChange}
+              style={{
+                width: "100%",
+                maxWidth: "100%",
+                height: "60px",
+                border: "1px solid #ccc",
+                borderRadius: "4px",
+                padding: "8px",
+                boxSizing: "border-box",
                 }}
               />
             ) : (
               <input
-                type={field.type || "text"}
-                name={field.name}
-                value={formData[field.name]}
-                onChange={handleChange}
-                style={{
-                  width: "100%",
-                  border: "1px solid #ccc",
-                  borderRadius: "4px",
-                  padding: "5px",
+              type={field.type || "text"}
+              name={field.name}
+              value={formData[field.name]}
+              onChange={handleChange}
+              style={{
+                width: "100%",
+                maxWidth: "100%",
+                border: "1px solid #ccc",
+                borderRadius: "4px",
+                padding: "8px",
+                boxSizing: "border-box",
                 }}
               />
             )}
@@ -177,9 +183,9 @@ function App() {
           border: "none",
           borderRadius: "6px",
           cursor: "pointer",
-          width: "100%", // Кнопка растягивается на всю ширину экрана
-          maxWidth: "300px", // Ограничение для больших экранов
-          margin: "20px auto 0", // Центрируем кнопку
+          width: "100%",
+          maxWidth: "300px",
+          margin: "20px auto 0",
           display: "block",
         }}
       >
