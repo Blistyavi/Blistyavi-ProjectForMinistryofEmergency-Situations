@@ -160,7 +160,7 @@ function App() {
                   width: "100%",
                   border: "1px solid #ccc",
                   borderRadius: "4px",
-                  padding: "8px",
+                  padding: "5px",
                 }}
               />
             )}
