@@ -80,11 +80,13 @@ function App() {
 
   return (
     <div
-      style={{
-        padding: "20px",
-        fontFamily: "Arial, sans-serif",
-        maxWidth: "800px", // Ограничение ширины для больших экранов
-        margin: "0 auto", // Центрирование на экранах
+    style={{
+      padding: "20px",
+      fontFamily: "Arial, sans-serif",
+      maxWidth: "800px",
+      width: "100%",
+      boxSizing: "border-box",
+      margin: "0 auto",
       }}
     >
       <h1 style={{ fontSize: "24px", textAlign: "center" }}>
