@@ -17,7 +17,3 @@
 - Сохранение файла:
 Сформированный документ сохраняется локально с помощью FileSaver.js.
 
-![photo_2024-11-27_17-21-45](https://github.com/user-attachments/assets/a3b8394b-e224-4ce6-a9a7-ab8b464b9b6a)
-
-
-![Screenshot_4](https://github.com/user-attachments/assets/88f444d5-e8dd-4803-92ba-ad83dd10752d)
