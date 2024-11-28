@@ -55,12 +55,13 @@ function App() {
             new Paragraph({
               children: [
                 new TextRun({
-                  text: "Протокол об административном правонарушении",
+                  text: "Протокол о пожаре",
                   bold: true,
                   size: 28, // Шрифт 14
                 }),
               ],
             }),
+            // Массив данных, который нужно вывести в .docx
             ...[
               { label: "Местоположение (город, село, район): ", value: formData.location },
               { label: "Составил акт о пожаре, произошедшем (дата, должность, звание, ФИО): ", value: formData.actDetails },
@@ -93,16 +94,17 @@ function App() {
               { label: "Особые замечания: ", value: formData.specialNotes },
               { label: "Подпись составившего: ", value: formData.signer },
               { label: "Экземпляры получили: ", value: formData.copiesReceived },
-            ].map((item) =>
-              new Paragraph({
+            ].map((item, index) => {
+              return new Paragraph({
                 children: [
                   new TextRun({
-                    text: item.label + item.value,
+                    text: `${item.label} ${item.value}`,
                     size: 28, // Шрифт 14
+                    break: 1, // Добавляет разрыв строки
                   }),
                 ],
-              })
-            ),
+              });
+            }),
           ],
         },
       ],
@@ -150,37 +152,37 @@ function App() {
         }}
       >
         {[
-          { label: "Местоположение (город, село, район): ", value: formData.location },
-          { label: "Составил акт о пожаре, произошедшем (дата, должность, звание, ФИО): ", value: formData.actDetails },
-          { label: "Дата происшествия: ", value: formData.incidentDate },
-          { label: "Наименование объекта: ", value: formData.objectName },
-          { label: "Принадлежность объекта: ", value: formData.objectOwnership },
-          { label: "Адрес объекта: ", value: formData.objectAddress },
-          { label: "Время обнаружения пожара ч/м: ", value: formData.fireDetectionTime },
-          { label: "Кто обнаружил пожар и каким способом сообщил о нем в пожарную охрану и номер телефона: ", value: formData.fireDetectionPerson },
-          { label: "Дата и время локализации пожара: ", value: formData.localizationDateTime },
-          { label: "Дата и время ликвидации пожара: ", value: formData.liquidationDateTime },
-          { label: "Обстановка пожара: ", value: formData.fireSituation },
-          { label: "Подразделения и участники тушения: ", value: formData.unitsAndParticipants },
-          { label: "Основные и спец. отделения: ", value: formData.mainAndSpecialUnits },
-          { label: "ГДЗС отделения: ", value: formData.gdzsUnits },
-          { label: "Число участников тушения: ", value: formData.participantsCount },
-          { label: "Тип, количество и принадлежность пожарной техники: ", value: formData.fireTechType },
-          { label: "Кол-во и вид поданных стволов: ", value: formData.hoseCount },
-          { label: "Огнетушащие вещества: ", value: formData.extinguishingAgents },
-          { label: "Водоисточники: ", value: formData.waterSources },
-          { label: "Последствия пожара: ", value: formData.fireConsequences },
-          { label: "Погибло людей: ", value: formData.casualties },
-          { label: "Получили травмы: ", value: formData.injuries },
-          { label: "Уничтожено строений и других объектов: ", value: formData.destroyedObjects },
-          { label: "С/х культуры: ", value: formData.agricultureProducts },
-          { label: "Погибло с/х животных: ", value: formData.animalCasualties },
-          { label: "Условия, способствовавшие развитию: ", value: formData.conditionsContributing },
-          { label: "Спасено на пожаре: ", value: formData.savedOnFire },
-          { label: "Акт направлен в: ", value: formData.actSentTo },
-          { label: "Особые замечания: ", value: formData.specialNotes },
-          { label: "Подпись составившего: ", value: formData.signer },
-          { label: "Экземпляры получили: ", value: formData.copiesReceived },
+           { label: "Местоположение (город, село, район): ", name: "location" },
+           { label: "Составил акт о пожаре, произошедшем (дата, должность, звание, ФИО): ", name: "actDetails" },
+           { label: "Дата происшествия: ", name: "incidentDate", type: "date" },
+           { label: "Наименование объекта: ", name: "objectName" },
+           { label: "Принадлежность объекта: ", name: "objectOwnership" },
+           { label: "Адрес объекта: ", name: "objectAddress" },
+           { label: "Время обнаружения пожара ч/м: ", name: "fireDetectionTime" },
+           { label: "Кто обнаружил пожар и каким способом сообщил о нем в пожарную охрану и номер телефона: ", name: "fireDetectionPerson" },
+           { label: "Дата и время локализации пожара: ", name: "localizationDateTime" },
+           { label: "Дата и время ликвидации пожара: ", name: "liquidationDateTime" },
+           { label: "Обстановка пожара: ", name: "fireSituation" },
+           { label: "Подразделения и участники тушения: ", name: "unitsAndParticipants" },
+           { label: "Основные и спец. отделения: ", name: "mainAndSpecialUnits" },
+           { label: "ГДЗС отделения: ", name: "gdzsUnits" },
+           { label: "Число участников тушения: ", name: "participantsCount" },
+           { label: "Тип, количество и принадлежность пожарной техники: ", name: "fireTechType" },
+           { label: "Кол-во и вид поданных стволов: ", name: "hoseCount" },
+           { label: "Огнетушащие вещества: ", name: "extinguishingAgents" },
+           { label: "Водоисточники: ", name: "waterSources" },
+           { label: "Последствия пожара: ", name: "fireConsequences" },
+           { label: "Погибло людей: ", name: "casualties" },
+           { label: "Получили травмы: ", name: "injuries" },
+           { label: "Уничтожено строений и других объектов: ", name: "destroyedObjects" },
+           { label: "С/х культуры: ", name: "agricultureProducts" },
+           { label: "Погибло с/х животных: ", name: "animalCasualties" },
+           { label: "Условия, способствовавшие развитию: ", name: "conditionsContributing" },
+           { label: "Спасено на пожаре: ", name: "savedOnFire" },
+           { label: "Акт направлен в: ", name: "actSentTo" },
+           { label: "Особые замечания: ", name: "specialNotes" },
+           { label: "Подпись составившего: ", name: "signer" },
+           { label: "Экземпляры получили: ", name: "copiesReceived" },
         ].map((field, index) => (
           <div key={index} style={{ marginBottom: "15px" }}>
             <label
